@@ -1,0 +1,9 @@
+1. Generate editor config;
+2. yarn add eslint -D;
+3. yarn eslint --init (3˚,1˚, react, N, ...);
+4. Remover arquivo package-lock.json;
+5. yarn(na raiz do projeto);
+6. yarn add prettier eslint-config-prettier eslint-plugin-prettier -D;
+7. yarn add babel-eslint -D;
+8. editar o arquivo .eslintrc.js;
+9. criar arquivo .prettierrc na raiz do projeto;
