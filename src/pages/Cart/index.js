@@ -9,16 +9,23 @@ import {
 import { Container, ProductTable, Total } from './styles';
 import * as CartActions from '../../store/modules/cart/actions';
 
-function Cart({ cart, removeFromCart }) {
+function Cart({ cart, removeFromCart, updateAmount }) {
+    function increment(product) {
+        updateAmount(product.id, product.amount + 1);
+    }
+    function decrement(product) {
+        updateAmount(product.id, product.amount - 1);
+    }
     return (
         <Container>
             <ProductTable>
                 <thead>
                     <tr>
-                        <th>-</th>
+                        <th>--</th>
                         <th>PRODUTO</th>
                         <th>QTD</th>
                         <th>SUBTOTAL</th>
+                        <th>--</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +40,10 @@ function Cart({ cart, removeFromCart }) {
                             </td>
                             <td>
                                 <div>
-                                    <button type="button">
+                                    <button
+                                        type="button"
+                                        onClick={() => decrement(product)}
+                                    >
                                         <MdRemoveCircleOutline
                                             size={20}
                                             color="#7159c1"
@@ -44,7 +54,10 @@ function Cart({ cart, removeFromCart }) {
                                         readOnly
                                         value={product.amount}
                                     />
-                                    <button type="button">
+                                    <button
+                                        type="button"
+                                        onClick={() => increment(product)}
+                                    >
                                         <MdAddCircleOutline
                                             size={20}
                                             color="#7159c1"
